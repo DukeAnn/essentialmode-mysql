@@ -2,7 +2,7 @@
 -- @author smuttoN
 -- @website www.github.com/sutt0n
 -- @date 5/22/2017
--- @version 0.0.1
+-- @version 0.0.2
 --]]
 
 -- source: https://wiki.fivem.net/wiki/Resource_manifest#resource_manifest_version
