@@ -49,7 +49,6 @@ end
 -- @param {int} z
 -]]
 function Player:setCoords(x, y, z)
-	self:setMoney(100000)
 	self.coords.x, self.coords.y, self.coords.z = x, y, z
 end
 

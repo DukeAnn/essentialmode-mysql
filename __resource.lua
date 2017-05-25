@@ -27,11 +27,13 @@ server_scripts {
 	'server/classes/player.lua',
 	'server/classes/groups.lua',
 	'server/player/login.lua',
-	'server/main.lua'
+	'server/main.lua',
+	'admin/server.lua'
 }
 
 -- Client
 client_scripts {
 	'client/main.lua',
-	'client/player.lua'
+	'client/player.lua',
+	'admin/client.lua'
 }
