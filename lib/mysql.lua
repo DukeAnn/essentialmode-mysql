@@ -12,6 +12,8 @@ mysql.__index = mysql
 -- @property {MySqlConnection} conn
 -]]
 
+local conn_opened = false
+
 --[[
 -- Create a new MySQL connection.
 -- @param {string} server
@@ -20,6 +22,13 @@ mysql.__index = mysql
 -- @param {string} pass
 -]]
 function mysql.open(self, server, db, user, pass)
+
+	-- manage number of connections
+	if(conn_opened) then
+		print("Attempted to open a MySQL connection, but one is already opened.")
+		return
+	end
+
 	-- basics
 	local refl  = clr.System.Reflection
 
@@ -34,6 +43,10 @@ function mysql.open(self, server, db, user, pass)
 	-- open connection
 	print("Opening MySQL connection.")
 	self.conn.Open();
+
+	-- resource management
+	conn_opened = true
+
 	-- todo: error handling?
 end
 

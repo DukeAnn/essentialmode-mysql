@@ -16,8 +16,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-local loaded = true
-local _money = 0
 local oldPos
 
 Citizen.CreateThread(function()
@@ -28,9 +26,11 @@ Citizen.CreateThread(function()
 		if(oldPos ~= pos) then
 			TriggerServerEvent("es:updatePositions", pos.x, pos.y, pos.z)
 
-			if(loaded) then
-				loaded = false
-			end
+			-- init
+			SendNUIMessage({
+				setmoney = true,
+				money = 0
+			})
 
 			oldPos = pos
 		end
@@ -55,8 +55,6 @@ AddEventHandler("es:setPlayerDecorator", function(key, val, now)
 end)
 
 AddEventHandler("playerSpawned", function()
-	updatePlayerCash(100000)
-
 	for key, val in pairs(decorators) do
 		DecorSetInt(GetPlayerPed(-1), key, val)
 	end
@@ -68,7 +66,10 @@ end)
 -]]
 RegisterNetEvent("es:activateMoney")
 AddEventHandler("es:activateMoney", function(_money)
-	SetSingleplayerHudCash(_money, 0)
+	SendNUIMessage({
+		setmoney = true,
+		money = _money
+	})
 end)
 
 --[[
@@ -76,7 +77,10 @@ end)
 -]]
 RegisterNetEvent("es:addedMoney")
 AddEventHandler("es:addedMoney", function(_money)
-	SetSingleplayerHudCash(_money, 0)
+	SendNUIMessage({
+		addmoney = true,
+		money = _money
+	})
 end)
 
 --[[
@@ -84,7 +88,10 @@ end)
 -]]
 RegisterNetEvent("es:removedMoney")
 AddEventHandler("es:removedMoney", function(_money)
-	SetSingleplayerHudCash(_money, 0)
+	SendNUIMessage({
+		removemoney = true,
+		money = _money
+	})
 end)
 
 RegisterNetEvent("es:setMoneyDisplay")

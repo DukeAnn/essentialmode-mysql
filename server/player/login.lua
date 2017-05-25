@@ -54,12 +54,7 @@ function loadUser(identifier, source, new)
 		user.group
 	)
 
-	print("Displaying cash!")
-	print("Money: " .. user.money)
-	print("Bank: " .. user.bank)
-	DisplayCash(true)
-	SetSingleplayerHudCash(user.money, user.bank)
---	SetMultiplayerBankCash(user.bank)
+	Users[source]:setMoney(user.money)
 
 	TriggerEvent("es:playerLoaded", source, Users[source])
 	TriggerClientEvent("es:setPlayerDecorator", source, "rank", Users[source]:getPermissions())

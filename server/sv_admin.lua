@@ -13,7 +13,7 @@ mysql:open(
 	conf.db.password
 )
 
--- Adding custom groups called owner, inhereting from superadmin. (It's higher then superadmin). And moderator, higher then user but lower then admin
+-- Adding custom groups called owner, inhereting from superadmin. (It's higher than superadmin). And moderator, higher than user but lower than admin
 TriggerEvent("es:addGroup", "owner", "superadmin", function(group) end)
 TriggerEvent("es:addGroup", "mod", "user", function(group) end)
 
