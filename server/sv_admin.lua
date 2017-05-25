@@ -45,7 +45,7 @@ end)
 
 -- Append a message
 function appendNewPos(msg)
-	local file = io.open('resources/essential-mode-mysql/positions.txt', "a")
+	local file = io.open('resources/essential-mode-mysql/io/positions.txt', "a")
 	newFile = msg
 	file:write(newFile)
 	file:flush()
